@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-kernel:
+    name: Build Kernel
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build
+        uses: dabao1955/kernel_build_action@main
+        with:
+          kernel-url: https://github.com/LowTension/android_kernel_xiaomi_sm8475
+          branch: staging
+          config: vendor/mondrian_defconfig
+          arch: arm64
+          aosp-gcc: true
+          aosp-clang: true
+          python-2.7: true
+          android-version: 12
+          aosp-clang-version: r416183b
